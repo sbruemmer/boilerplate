@@ -223,19 +223,21 @@ class tplHelperFunctions
      *
 	 * @access public
 	 *
-	 * @param null
+	 * @param bool $homeTitle output page name within homepage html title
 	 *
 	 * @return null
+	 *
 	 * @since  1.0
     */
-	static public function setMetadata()
+	static public function setMetadata( $homeTitle = true )
 	{
 		$doc    = Factory::getDocument();
 
 		$doc->setHtml5(true);
 		$doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
 		$doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0');
-		//self::setGenerator(self::getSitename());
+		
+		if ( !$homeTitle ) $doc->setTitle( Factory::getConfig()->get('sitename') );
 	}
 
 	/**
