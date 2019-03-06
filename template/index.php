@@ -27,7 +27,6 @@ tplFooHelper::setMetadata();
 	<jdoc:include type="head" />
 </head>
 <body class="<?php echo tplFooHelper::setBodySuffix(); ?>">
-<?php echo tplFooHelper::setAnalytics(0, 'your-analytics-id'); ?>
 
 <a href="#main" class="sr-only sr-only-focusable"><?php echo Text::_('TPL_FOO_SKIP_LINK_LABEL'); ?></a>
 
