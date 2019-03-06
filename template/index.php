@@ -31,6 +31,7 @@ tplFooHelper::setMetadata();
 <a href="#main" class="sr-only sr-only-focusable"><?php echo Text::_('TPL_FOO_SKIP_LINK_LABEL'); ?></a>
 
 <a href="<?php echo $this->baseurl; ?>/">
+    <?php echo tplFooHelper::getSitename(); ?>
     <?php if ($this->params->get('sitedescription')) : ?>
         <?php echo '<div class="site-description">' . htmlspecialchars($this->params->get('sitedescription'), ENT_COMPAT, 'UTF-8') . '</div>'; ?>
     <?php endif; ?>
