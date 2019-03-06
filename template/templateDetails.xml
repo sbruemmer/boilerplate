@@ -11,7 +11,6 @@
     <files>
         <filename>component.php</filename>
         <filename>error.php</filename>
-        <filename>offline.php</filename>
         <filename>index.php</filename>
         <filename>templateDetails.xml</filename>
         <filename>template_preview.png</filename>
