@@ -23,7 +23,7 @@ use \Joomla\CMS\Uri\Uri;
  * 
  * @since    1.0
  */
-class tplFooHelper
+class tplHelperFunctions
 {
 	static public function template()
 	{

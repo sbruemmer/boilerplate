@@ -16,10 +16,10 @@ use \Joomla\CMS\Language\Text;
 
 require_once JPATH_THEMES . '/' . $this->template . '/helper.php';
 
-tplFooHelper::loadCss();
-tplFooHelper::loadJs();
-tplFooHelper::setMetadata();
-tplFooHelper::setGenerator(''); /* Remove generator tag */
+tplHelperFunctions::loadCss();
+tplHelperFunctions::loadJs();
+tplHelperFunctions::setMetadata();
+tplHelperFunctions::setGenerator(''); /* Remove generator tag */
 
 ?>
 <!DOCTYPE html>
@@ -27,12 +27,12 @@ tplFooHelper::setGenerator(''); /* Remove generator tag */
 <head>
 	<jdoc:include type="head" />
 </head>
-<body class="<?php echo tplFooHelper::setBodySuffix(); ?>">
+<body class="<?php echo tplHelperFunctions::setBodySuffix(); ?>">
 
 <a href="#main" class="sr-only sr-only-focusable"><?php echo Text::_('TPL_FOO_SKIP_LINK_LABEL'); ?></a>
 
 <a href="<?php echo $this->baseurl; ?>/">
-    <?php echo tplFooHelper::getSitename(); ?>
+    <?php echo tplHelperFunctions::getSitename(); ?>
     <?php if ($this->params->get('sitedescription')) : ?>
         <?php echo '<div class="site-description">' . htmlspecialchars($this->params->get('sitedescription'), ENT_COMPAT, 'UTF-8') . '</div>'; ?>
     <?php endif; ?>
@@ -56,7 +56,7 @@ tplFooHelper::setGenerator(''); /* Remove generator tag */
 <footer>
 	<jdoc:include type="modules" name="footer" style="none" />
 	<p>
-		&copy; <?php echo date('Y'); ?> <?php echo tplFooHelper::getSitename(); ?>
+		&copy; <?php echo date('Y'); ?> <?php echo tplHelperFunctions::getSitename(); ?>
 	</p>
 </footer>
 <jdoc:include type="modules" name="debug" style="none" />

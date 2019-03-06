@@ -15,8 +15,8 @@ use \Joomla\CMS\Factory;
 
 require_once JPATH_THEMES . '/' . $this->template . '/helper.php';
 
-tplFooHelper::loadCss();
-tplFooHelper::setMetadata();
+tplHelperFunctions::loadCss();
+tplHelperFunctions::setMetadata();
 
 ?>
 <!DOCTYPE html>
