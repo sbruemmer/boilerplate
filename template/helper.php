@@ -273,7 +273,11 @@ class tplHelperFunctions
 	 */
 	static public function loadJs()
 	{
-		HTMLHelper::_('script', 'template.js', ['version' => 'auto', 'relative' => true]);
+		HTMLHelper::_('script', 'template.js', ['version' => 'auto', 'relative' => true], ['async' => 'async']);
+
+		// load jquery noconflict in template.js
+		$file = JURI::base(true).'/media/jui/js/jquery-noconflict.js';
+		unset(JFactory::getDocument()->_scripts[$file]);
 	}
 
 }
