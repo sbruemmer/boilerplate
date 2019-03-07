@@ -237,7 +237,7 @@ class tplHelperFunctions
 		$doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
 		$doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0');
 		
-		if ( !$homeTitle ) $doc->setTitle( Factory::getConfig()->get('sitename') );
+		if ( !$homeTitle && self::isHome() ) $doc->setTitle( Factory::getConfig()->get('sitename') );
 	}
 
 	/**
