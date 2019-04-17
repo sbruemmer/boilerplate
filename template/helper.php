@@ -280,4 +280,62 @@ class tplHelperFunctions
 		unset(JFactory::getDocument()->_scripts[$file]);
 	}
 
+	/**
+	 * Method to remove scripts
+	 *
+	 * @access public
+	 *
+	 * @param mixed $type
+	 *
+	 * @return null
+	 *
+	 * @since  1.0
+	 */
+	static public function removeScripts($type = '')
+	{
+		// inline scripts
+		$inline = JFactory::getDocument()->_script;
+
+		if ( is_array($type) )
+		{
+			foreach ($type as $t) {
+				self::removeScripts($t);
+			}
+		}
+		else
+		{
+			switch ($type) {
+				case 'caption':
+						// remove inline script
+						$pattern = '%jQuery\(window\)\.on\(\'load\'\,\s*function\(\)\s*\{\s*new\s*JCaption\(\'img.caption\'\);\s*}\s*\);\s*%';
+						JFactory::getDocument()->_script = preg_replace($pattern, '', $inline);
+
+						// remove file
+						$file = JURI::base(true).'/media/system/js/caption.js';
+						unset( JFactory::getDocument()->_scripts[$file] );
+					break;
+
+				case 'tooltip':
+						// remove inline script
+						$pattern = '%\s*jQuery\(document\)\.ready\(function\(\)\{\s*jQuery\(\'\.hasTooltip\'\)\.tooltip\(\{\"html\":\s*true,\"container\":\s*\"body\"\}\);\s*\}\);\s*%';
+						JFactory::getDocument()->_script = preg_replace($pattern, '', $inline);
+					break;
+
+				case 'migrate':
+						// remove file
+						$file = JURI::base(true).'/media/jui/js/jquery-migrate.min.js';
+						unset( JFactory::getDocument()->_scripts[$file] );
+
+				case 'html5fallback':
+						// remove file
+						$file = JURI::base(true).'/media/system/js/html5fallback.js';
+						unset( JFactory::getDocument()->_scripts[$file] );
+					break;
+				
+				default:
+					break;
+			}
+		}
+	}
+
 }
