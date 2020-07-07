@@ -331,6 +331,18 @@ class tplHelperFunctions
 						$file = JURI::base(true).'/media/system/js/html5fallback.js';
 						unset( JFactory::getDocument()->_scripts[$file] );
 					break;
+
+				case 'jquery':
+						// remove file
+						$file = JURI::base(true).'/media/jui/js/jquery.min.js';
+						unset( JFactory::getDocument()->_scripts[$file] );
+					break;
+
+				case 'bootstrap':
+						// remove file
+						$file = JURI::base(true).'/media/jui/js/bootstrap.min.js';
+						unset( JFactory::getDocument()->_scripts[$file] );
+					break;
 				
 				default:
 					break;
