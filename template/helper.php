@@ -114,7 +114,7 @@ class tplHelperFunctions
 	 */
 	static public function getPageClass()
 	{
-		$activeMenu = Factory::getApplication()->getMenu()->getActive();
+		$activeMenu = self::getMenuActive();
 		$pageclass  = ($activeMenu) ? $activeMenu->params->get('pageclass_sfx', '') : '';
 
 		return $pageclass;
@@ -133,7 +133,7 @@ class tplHelperFunctions
 	static public function isHome()
 	{
 		// Fetch the active menu-item
-		$activeMenu = Factory::getApplication()->getMenu()->getActive();
+		$activeMenu = self::getMenuActive();
 
 		// Return whether this active menu-item is home or not
 		return (boolean) ($activeMenu) ? $activeMenu->home : false;
@@ -161,6 +161,27 @@ class tplHelperFunctions
 		}
 
 		return $path;
+	}
+
+	/**
+	 * Method to get active menu item
+	 *
+	 * @access public
+	 *
+	 * @param string $type single property (see https://api.joomla.org/cms-3/classes/Joomla.CMS.Menu.MenuItem.html)
+	 *
+	 * @return mixed
+	 * @since  1.0
+	 */
+	static public function getMenuActive($type = null)
+	{
+		$active = Factory::getApplication()->getMenu()->getActive();
+		
+		if (!is_null($type) && property_exists($active, $type)) {
+			$active = $active->{'$type'};
+		}
+
+		return $active;
 	}
 
 	/**
