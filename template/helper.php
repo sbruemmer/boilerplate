@@ -16,18 +16,41 @@ use \Joomla\CMS\HTML\HTMLHelper;
 use \Joomla\CMS\Uri\Uri;
 
 /**
- * Foo template helper.
- *
- * @package    Joomla.Site
- * @subpackage Template.foo
+ * Template helper functions
  * 
  * @since    1.0
  */
 class tplHelperFunctions
 {
+
+	/**
+	 * Method to get template name
+	 *
+	 * @access public
+	 *
+	 * @param null
+	 *
+	 * @return string
+	 * @since 1.0
+	 */
 	static public function template()
 	{
 		return Factory::getApplication()->getTemplate();
+	}
+
+	/**
+	 * Method to get template path
+	 *
+	 * @access public
+	 *
+	 * @param null
+	 *
+	 * @return string
+	 * @since 1.0
+	 */
+	static public function getTemplatePath()
+	{
+		return Uri::base(true) . '/templates/' . self::template() . '/';
 	}
 
 	/**
