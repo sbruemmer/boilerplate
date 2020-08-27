@@ -17,8 +17,7 @@ require_once JPATH_THEMES . '/' . $this->template . '/helper.php';
 
 tplHelperFunctions::loadCss();
 tplHelperFunctions::loadJs();
-tplHelperFunctions::setMetadata(false);
-tplHelperFunctions::setGenerator(''); /* Remove generator tag */
+tplHelperFunctions::setMetadata();
 
 ?>
 <!DOCTYPE html>
