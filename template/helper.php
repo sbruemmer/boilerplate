@@ -11,28 +11,26 @@
 
 defined('_JEXEC') or die;
 
-use \Joomla\CMS\Factory;
-use \Joomla\CMS\HTML\HTMLHelper;
-use \Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Uri\Uri;
 
 /**
  * Template helper functions
  * 
- * @since    1.0
+ * @since   1.0.0z
  */
 class tplHelperFunctions
 {
-
 	/**
-	 * Method to get template name
+	 * Method to get Template
 	 *
 	 * @access public
 	 *
-	 * @param null
-	 *
-	 * @return string
-	 * @since 1.0
+	 * @return mixed
+	 * @throws Exception
 	 */
+
 	static public function template()
 	{
 		return Factory::getApplication()->getTemplate();
@@ -58,8 +56,6 @@ class tplHelperFunctions
 	 *
 	 * @access public
 	 *
-	 * @param null
-	 *
 	 * @return mixed
 	 * @since 1.0
 	 */
@@ -74,8 +70,6 @@ class tplHelperFunctions
 	 *
 	 * @access public
 	 *
-	 * @param null
-	 *
 	 * @return mixed
 	 * @since 1.0
 	 */
@@ -88,8 +82,6 @@ class tplHelperFunctions
 	 * Method to get current Page Layout
 	 *
 	 * @access public
-	 *
-	 * @param null
 	 *
 	 * @return mixed
 	 * @since version
@@ -104,8 +96,6 @@ class tplHelperFunctions
 	 *
 	 * @access public
 	 *
-	 * @param null
-	 *
 	 * @return mixed
 	 * @since 1.0
 	 */
@@ -119,9 +109,7 @@ class tplHelperFunctions
 	 *
 	 * @access public
 	 *
-	 * @param null
-	 *
-	 * @return int
+	 * @return integer
 	 * @since 1.0
 	 */
 	static public function getItemId()
@@ -148,9 +136,7 @@ class tplHelperFunctions
 	 *
 	 * @access public
 	 *
-	 * @param null
-	 *
-	 * @return bool
+	 * @return boolean
 	 * @since  1.0
 	 */
 	static public function isHome()
@@ -167,7 +153,7 @@ class tplHelperFunctions
 	 *
 	 * @access public
 	 *
-	 * @param string $output Output type
+	 * @param   string $output Output type
 	 *
 	 * @return mixed
 	 * @since  1.0
@@ -176,6 +162,7 @@ class tplHelperFunctions
 	{
 		$path = Uri::getInstance()->getPath();
 		$path = preg_replace('/^\//', '', $path);
+
 		if ($output == 'array')
 		{
 			$path = explode('/', $path);
@@ -212,9 +199,7 @@ class tplHelperFunctions
 	 *
 	 * @access public
 	 *
-	 * @param null
-	 *
-	 * @return bool
+	 * @return boolean
 	 * @since  1.0
 	 */
 	static public function setBodySuffix()
@@ -236,9 +221,9 @@ class tplHelperFunctions
 	 *
 	 * @access public
 	 *
-	 * @param string $generator
+	 * @param   string $generator Generator
 	 *
-	 * @return null
+	 * @return void
 	 *
 	 * @since  1.0
 	 */
@@ -252,8 +237,6 @@ class tplHelperFunctions
 	 *
 	 * @access public
 	 *
-	 * @param null
-	 *
 	 * @return string
 	 * @since  1.0
 	 */
@@ -263,25 +246,21 @@ class tplHelperFunctions
 	}
 
 	/**
-     * Method to set some Meta data
-     *
+	 * Method to set some Meta data
+	 *
 	 * @access public
 	 *
-	 * @param bool $homeTitle output page name within homepage html title
-	 *
-	 * @return null
-	 *
+	 * @return void
 	 * @since  1.0
-    */
-	static public function setMetadata( $homeTitle = true )
+	 */
+	static public function setMetadata()
 	{
 		$doc    = Factory::getDocument();
 
 		$doc->setHtml5(true);
 		$doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
 		$doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0');
-		
-		if ( !$homeTitle && self::isHome() ) $doc->setTitle( Factory::getConfig()->get('sitename') );
+		self::setGenerator(self::getSitename());
 	}
 
 	/**
@@ -289,8 +268,8 @@ class tplHelperFunctions
 	 *
 	 * @access public
 	 *
-	 * @param null
-	 *
+	 * @throws Exception
+	 * @return void
 	 * @since  1.0
 	 */
 	static public function loadCss()
@@ -311,8 +290,7 @@ class tplHelperFunctions
 	 *
 	 * @access public
 	 *
-	 * @param null
-	 *
+	 * @return void
 	 * @since  1.0
 	 */
 	static public function loadJs()
@@ -332,7 +310,6 @@ class tplHelperFunctions
 	 * @param mixed $type
 	 *
 	 * @return null
-	 *
 	 * @since  1.0
 	 */
 	static public function removeScripts($type = '')
